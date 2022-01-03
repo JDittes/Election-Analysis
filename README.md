@@ -6,6 +6,8 @@ I was hired to help Tom, an official with the Colorado Board of Elections, to he
 
 Along with the calculations, I created a script that would automatically transfer the data to a readable text document, which would update results of the count and publish them.
 
+Previously, election data had been collected and analyzed using Excel. With Python we will be able to create code that will process huge amounts of data effeciently and reliably.
+
 ## Election-Audit Results: 
 
 - How many votes were cast in this congressional election?
@@ -43,4 +45,16 @@ Along with the calculations, I created a script that would automatically transfe
   - She received 73.8% of the vote
 
 ## Election-Audit Summary: 
-In a summary statement, provide a business proposal to the election commission on how this script can be used—with some modifications—for any election. Give at least two examples of how this script can be modified to be used for other elections.
+Setting up this program in Python means that we can import any amount of data that is in csv format (comma-separated values). This means that the Colorado Board of Elections could use it for any race, from local to statewide with few amendments.
+
+The first area where the code would be altered would be in the file that was imported. Python has two dependencies that we can import to help import the data: _csv_ and _os_. Currently the line of code reads `file_to_load = os.path.join("Resources", "election_results.csv")`  The path which os joins to the program comes from the "Resouces" folder and is titled "election_results.csv". We would need to simply change the path to the folder containing the new data and identify the new file to import election results.
+
+The code could be adapted down to record and tabulate results from local precincts, to counties (the current view), to congressional districts or regions (larger views). This would involve creating new variables in the for-loop to tabulate the votes in each region. In the code, 
+    `for row in reader:
+        total_votes = total_votes + 1
+        candidate_name = row[2]
+        county_name = row[1]`
+        
+The _candidate_name_ would stay the same in the adapted code, but _county_name_ would be replaced with the jurisdiction voting.
+
+The code that we have developed is a framework. From it we can build a structure to tabulate election data from a variety of sources. From this framework we can build a system for election reporting and analysis that will serve the Colorado Board of Elections for many years.
